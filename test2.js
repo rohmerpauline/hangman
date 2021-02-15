@@ -4,7 +4,6 @@
     let newUnderscore; 
     console.log(letter);
     
-
     document.getElementById("letter-1").addEventListener("click", () => {
         // check if letter clicked on is in the word
         let rightLetter = wordLetters.includes(document.getElementById("letter-1").textContent);
