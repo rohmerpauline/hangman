@@ -38,6 +38,7 @@ header {
     padding: 5px;
     background-color: white;
     border-radius: 5px;
+    width: 30px;
 }
 
 /* LIVES */
@@ -67,9 +68,6 @@ header {
     width: 90%;
     text-align: center;
     justify-content: center;
-}
-
-.grid-item {
 }
 
 .button-style {
