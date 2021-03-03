@@ -104,6 +104,8 @@ button:active {
     font-size : 25px;
 }
 
+/*Media Queries */
+
 @media only screen and (min-width:400px) and (max-width: 900px) {
     #header-title {
         transform : scale(1.5);
