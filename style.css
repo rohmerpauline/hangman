@@ -6,7 +6,7 @@ body {
 
 #grid-layout {
     display: grid;
-    grid-template-rows: max-content max-content auto auto;
+    grid-template-rows: auto max-content auto auto;
     grid-row-gap: 0px;
     grid-template-columns: 90%;
     justify-content: center;
