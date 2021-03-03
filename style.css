@@ -55,7 +55,7 @@ header {
     width : auto;
 /*     text-align: center; */
     font-size: 30px;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     background-color: white;
     border-radius: 5px;
 }
@@ -95,5 +95,7 @@ header {
     color : #ffffff;
     width: 40px;
     text-align: center;
+    justify-content: center;
+    padding: 3px;
 }
 
