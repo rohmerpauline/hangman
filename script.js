@@ -47,6 +47,8 @@ let numberOfLives = document.getElementById("lives-number");
 let gameMessage = document.getElementById("game-message");
 let buttons = document.querySelectorAll("button");
 
+document.getElementById("retry-button").style.display = "none";
+
 // HOW THE GAME WORKS :
 
 function tryLetter (buttonLetter) {
@@ -78,19 +80,27 @@ function tryLetter (buttonLetter) {
         buttonLetter.disabled = true;
         numberOfLives.innerHTML -= 1;
     }
+
+    endGame();
+    
+};
+
+// WHEN THE GAME IS OVER
+function endGame () {
     /* what happens when the game is lost*/
     if (numberOfLives.innerHTML == 0) {
         gameMessage.innerHTML = `You lost the game... The word was ${wordRandom}.`;
-        for (let i=0; i <= buttons.length; i++) {
-            buttons[i].disabled = true;
-            buttons[i].style.opacity = "50%";
-        }
+        gameMessage.style.fontSize = "40px";
+        document.getElementById("alphabet-buttons").style.display = "none";
+        document.getElementById("retry-button").style.display = "block";
     /* what happens when the game is won*/
     } else if (wordToGuessUnderscore.innerHTML.includes("_") === false) {
         gameMessage.innerHTML = "Congratulations, you won the game !";
-    } 
-};
-
+        gameMessage.style.fontSize = "40px";
+        document.getElementById("alphabet-buttons").style.display = "none";
+        document.getElementById("retry-button").style.display = "block";
+    }
+}
 
 
 // APPLY THE GAME LOGIC TO EVERY BUTTONS :

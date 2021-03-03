@@ -5,101 +5,103 @@
         <title>Hangman by Pauline</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com"> 
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/9d2e37d17f.js" crossorigin="anonymous"></script>
+        <script defer type="text/javascript" src="script.js"></script>
     </head>
     <body id="grid-layout">
-        <header class="header">
-            <h1 class="header-title">Hangman <span id="creator-name">By Pauline</span></h1>
+        <header>
+            <h1 id="header-title">Hangman <span id="creator-name">By Pauline</span></h1>
         </header>
         <main>
             <article id="hangman-word">
                 <p><span id="word"></span></p>
             </article>
-            <article class="lives-left">
-                <p id="game-message"><span id="lives-number">11</span> lives left</p>
+            <article id="lives-left">
+                <p id="game-message"><span id="lives-number">10</span> lives left</p>
             </article>
-            <article id="button-item" class=grid-container>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-1" id="letter-1">a</button>
+            <article id="alphabet-buttons">
+                <p>
+                    <button id="letter-1">a</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-2">b</button>
+                <p>
+                    <button id="letter-2">b</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-3">c</button>
+                <p>
+                    <button id="letter-3">c</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click" id="letter-4">d</button>
+                <p>
+                    <button id="letter-4">d</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-5">e</button>
+                <p>
+                    <button id="letter-5">e</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-6">f</button>
+                <p>
+                    <button id="letter-6">f</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-7">g</button>
+                <p>
+                    <button id="letter-7">g</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-8">h</button>
+                <p>
+                    <button id="letter-8">h</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-1" id="letter-9">i</button>
+                <p>
+                    <button id="letter-9">i</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-10">j</button>
+                <p>
+                    <button id="letter-10">j</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-11">k</button>
+                <p>
+                    <button id="letter-11">k</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-12">l</button>
+                <p>
+                    <button id="letter-12">l</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-13">m</button>
+                <p>
+                    <button id="letter-13">m</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-14">n</button>
+                <p>
+                    <button id="letter-14">n</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-1" id="letter-15">o</button>
+                <p>
+                    <button id="letter-15">o</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-16">p</button>
+                <p>
+                    <button id="letter-16">p</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-17">q</button>
+                <p>
+                    <button id="letter-17">q</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-1" id="letter-18">r</button>
+                <p>
+                    <button id="letter-18">r</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-19">s</button>
+                <p>
+                    <button id="letter-19">s</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-20">t</button>
+                <p>
+                    <button id="letter-20">t</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-21">u</button>
+                <p>
+                    <button id="letter-21">u</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-22">v</button>
+                <p>
+                    <button id="letter-22">v</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-23">w</button>
+                <p>
+                    <button id="letter-23">w</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-24">x</button>
+                <p>
+                    <button id="letter-24">x</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-25">y</button>
+                <p>
+                    <button id="letter-25">y</button>
                 </p>
-                <p class="grid-item">
-                    <button type="button" class="button-style button-click l-2" id="letter-26">z</button>
+                <p>
+                    <button id="letter-26">z</button>
                 </p>
+            </article>
+            <article id="retry-button">
+                <button onClick = "window.location.reload()" id="retry">Retry <i class="fas fa-redo"></i></button>
             </article>
         </main>
-        <script type="text/javascript" src="script.js"></script>
     </body>
 </html>
