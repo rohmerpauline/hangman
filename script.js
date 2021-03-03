@@ -1,4 +1,6 @@
-/* To GENERATE A RANDOM WORD*/
+            /* ******************* INITIALIZE THE GAME ******************* */
+
+// To generate a random word
 
 let wordToGuess = ["ardoise", "espace", "pingouin", "manteau", "girafe", "poubelle", "coronavirus"];
 
@@ -6,97 +8,95 @@ let wordRandom = wordToGuess[Math.floor(Math.random() * wordToGuess.length)];
 
 console.log(wordRandom); // SUPPR
 
-/* TO CHECK LENGTH OF WORD AND DISPLAY NUMBER OF UNDERSOCRE DEPENDING ON THE WORD LENGTH*/
+// To check the length of the random word
 
 let wordLenght = wordRandom.length;
-console.log(wordLenght);
 
-let changeWord =  document.getElementById("word");
-for (i = 0; i <= wordLenght; i++) {
-        changeWord.innerHTML = "_".repeat(i);
+// To display underscores in HTML depending on the word length
+
+let wordToGuessUnderscore =  document.getElementById("word");
+for (let i = 0; i <= wordLenght; i++) {
+        wordToGuessUnderscore.innerHTML = "_".repeat(i);
 };
 
-/* TO STORE ALL THE ALPHABER LETTERS OF THE BUTTONS IN AN ARRAY*/
+console.log(wordToGuessUnderscore);
 
-let alphabetButton = [];
-for (i=0; i<26; i++) {
-    alphabetButton.push(document.getElementById("letter-"+(i+1)).innerHTML);
-}
-
-console.log(alphabetButton);
-
-/* TO STORE THE UNDERSCORE STRING IN AN ARRAY*/
+// To store the underscore string in the array
 
 let wordUnderscore = [];
+let wordIndividualLetters;
 let splitWord = document.getElementById("word").innerHTML;
-for (i = 0; i < wordLenght; i++) {
+for (let i = 0; i < wordLenght; i++) {
     wordUnderscore.push(splitWord.charAt(i));
 }
 
-console.log(wordUnderscore);
 
-/* To store the word letter in an array*/
+// To store the random word letters in an array
 
 let wordLetters = [];
-    for (i=0; i < wordLenght; i++) {
+    for (let i=0; i < wordLenght; i++) {
         wordLetters.push(wordRandom.charAt(i));
-/*
-        let rightLetter = alphabetButton.includes(wordLetters[0]);
-            if (rightLetter) {
-                wordUnderscore[0] = wordLetters[0];
-                changeWord.innerHTML = changeWord.innerHTML.replace(changeWord.innerHTML.charAt(0), wordUnderscore[0]);
-            }*/
     };
-    console.log(wordLetters);
+console.log(wordLetters);
 
-/*           **************************   MAIN GAME     **************************   */
 
-    let letter = document.getElementById("letter-1").textContent;
-    let letter2 = document.getElementById("letter-2").textContent;
-    let indexOfLetter;
-    let newUnderscore; 
-    console.log(letter);
 
-    document.getElementById("letter-1").addEventListener("click", () => {
-        // check if letter clicked on is in the word
-        let rightLetter = wordLetters.includes(document.getElementById("letter-1").textContent);
-        console.log(rightLetter);
-        // check the index of this letter in the WordLetters array
-        if (rightLetter) {
-            indexOfLetter = wordLetters.indexOf(letter);
-            console.log(indexOfLetter);
+            /* ******************* MAIN GAME *******************  */
 
-            // change the underscore array by adding the letter found by the user 
-            wordUnderscore.splice(indexOfLetter, 1, letter);
-            console.log(wordUnderscore);
-            changeWord.innerHTML = wordUnderscore.join(" ");
-            document.getElementById("letter-1").disabled = true;
-            document.getElementById("letter-1").style.opacity = "50%";
-        } else {
-            document.getElementById("letter-1").style.opacity = "50%";
-            document.getElementById("letter-1").disabled = true;
+let numberOfLives = document.getElementById("lives-number");
+let gameMessage = document.getElementById("game-message");
+let buttons = document.querySelectorAll("button");
+
+// HOW THE GAME WORKS :
+
+function tryLetter (buttonLetter) {
+    /*check if the word contains the button's letter*/
+    let rightLetter = wordLetters.includes(buttonLetter.textContent);
+    // IF THE LETTER IS IN THE WORD
+    if (rightLetter) {
+        /*check the indices of the letter in the word (can be several times in the word)*/
+        let indicesOfLetter = [];
+        let element = buttonLetter.textContent;
+        let idx = wordLetters.indexOf(element);
+        while (idx != -1) {
+            indicesOfLetter.push(idx);
+            idx = wordLetters.indexOf(element, idx+1);
         }
-    });
-    
-    document.getElementById("letter-2").addEventListener("click", () => {
-        // check if letter clicked on is in the word
-        let rightLetter = wordLetters.includes(document.getElementById("letter-2").textContent);
-        console.log(rightLetter);
-        // check the index of this letter in the WordLetters array
-        if (rightLetter) {
-            indexOfLetter = wordLetters.indexOf(letter2);
-            console.log(indexOfLetter);
-
-            // change the underscore array by adding the letter found by the user 
-            wordUnderscore.splice(indexOfLetter, 1, letter2);
+        /*replace underscore by the letter in HTML*/
+        for (let i=0; i < indicesOfLetter.length; i++) {
+            wordUnderscore.splice(indicesOfLetter[i], 1, buttonLetter.textContent);
+            wordToGuessUnderscore.innerHTML = wordUnderscore.join("");
             console.log(wordUnderscore);
-            changeWord.innerHTML = wordUnderscore.join(" ");
-            document.getElementById("letter-2").disabled = true;
-            document.getElementById("letter-2").style.opacity = "50%";
-        } else {
-            document.getElementById("letter-2").style.opacity = "50%";
-            document.getElementById("letter-2").disabled = true;
         }
-    });
-    
+        /*disable letter's button*/
+        buttonLetter.disabled = true;
+        buttonLetter.style.opacity = "50%";
+    // IF THE LETTER IS NOT IN THE WORD
+    } else {
+        /*disable button and takes a life out*/
+        buttonLetter.style.opacity = "50%";
+        buttonLetter.disabled = true;
+        numberOfLives.innerHTML -= 1;
+    }
+    /* what happens when the game is lost*/
+    if (numberOfLives.innerHTML == 0) {
+        gameMessage.innerHTML = `You lost the game... The word was ${wordRandom}.`;
+        for (let i=0; i <= buttons.length; i++) {
+            buttons[i].disabled = true;
+            buttons[i].style.opacity = "50%";
+        }
+    /* what happens when the game is won*/
+    } else if (wordToGuessUnderscore.innerHTML.includes("_") === false) {
+        gameMessage.innerHTML = "Congratulations, you won the game !";
+    } 
+};
 
+
+
+// APPLY THE GAME LOGIC TO EVERY BUTTONS :
+
+for (let i = 1; i <= 26 ; i++) {
+    document.getElementById(`letter-${i}`).addEventListener("click", () => {
+        tryLetter(document.getElementById(`letter-${i}`));
+    });
+};
