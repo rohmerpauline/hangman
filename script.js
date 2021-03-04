@@ -2,11 +2,9 @@
 
 // To generate a random word
 
-let wordToGuess = ["ardoise", "espace", "pingouin", "manteau", "girafe", "poubelle", "coronavirus"];
+let wordToGuess = ["ambition", "adoption", "aquarium", "breakfast", "balance", "buffet", "crown", "champagne", "convention", "drive", "difference", "divorce", "empire", "education", "exercise", "flower" , "format", "fashion", "girlfriend", "glacier", "garage", "horoscope", "hotdog", "honest", "imagine", "invite", "incapable", "journal", "jungle", "justice", "kitchen", "knowledge", "kidnap", "lesson", "lunch", "letter", "message", "monkey", "manager", "normal", "network", "national", "obstacle", "opera", "occasion", "president", "passion", "position","question", "quantity", "quota", "respect", "routine", "reproduction", "sandwich", "source", "surprise", "temple", "technique", "tradition", "unique", "umbrella", "urgency", "voyage", "village", "video", "world", "welcome", "woman", "young", "year", "zero", "zone"];
 
 let wordRandom = wordToGuess[Math.floor(Math.random() * wordToGuess.length)];
-
-console.log(wordRandom); // SUPPR
 
 // To check the length of the random word
 
@@ -19,8 +17,6 @@ for (let i = 0; i <= wordLenght; i++) {
         wordToGuessUnderscore.innerHTML = "_".repeat(i);
 };
 
-console.log(wordToGuessUnderscore);
-
 // To store the underscore string in the array
 
 let wordUnderscore = [];
@@ -30,16 +26,12 @@ for (let i = 0; i < wordLenght; i++) {
     wordUnderscore.push(splitWord.charAt(i));
 }
 
-
 // To store the random word letters in an array
 
 let wordLetters = [];
     for (let i=0; i < wordLenght; i++) {
         wordLetters.push(wordRandom.charAt(i));
     };
-console.log(wordLetters);
-
-
 
             /* ******************* MAIN GAME *******************  */
 
@@ -60,7 +52,7 @@ function tryLetter (buttonLetter) {
         let indicesOfLetter = [];
         let element = buttonLetter.textContent;
         let idx = wordLetters.indexOf(element);
-        while (idx != -1) {
+        while (idx !== -1) {
             indicesOfLetter.push(idx);
             idx = wordLetters.indexOf(element, idx+1);
         }
@@ -101,7 +93,6 @@ function endGame () {
         document.getElementById("retry-button").style.display = "block";
     }
 }
-
 
 // APPLY THE GAME LOGIC TO EVERY BUTTONS :
 
